@@ -11,13 +11,22 @@
     <!-- Choosing search style -->
     <fieldset id="radioFS">
       <legend>National Park Search Style</legend>
+
+      <label for="allRadio">Show All</label>
+      <input
+        type="radio"
+        name="searchType"
+        value="all"
+        id="allRadio"
+        checked
+      />
+
       <label for="locationRadio">Location</label>
       <input
         type="radio"
         name="searchType"
         value="location"
         id="locationRadio"
-        checked
       />
 
       <label for="parkTypeRadio">Park Type</label>
@@ -63,6 +72,7 @@
     <script>
       const locationRadio = document.querySelector("#locationRadio"),
         parkTypeRadio = document.querySelector("#parkTypeRadio"),
+        allRadio = document.querySelector('#allRadio'),
         locationSelect = document.querySelector("#locationSelect"),
         parkTypeSelect = document.querySelector("#parkTypeSelect"),
         resultsSelect = document.querySelector("#resultsSelect"),
@@ -72,6 +82,10 @@
 
       // Finds which radio button is checked and opens appropriate field set, while hidding innaprpriote fieldset.
       radioFS.onchange = () => {
+        if (allRadio.checked) {
+            locationFS.hidden = true;
+            typeFS.hidden = true;
+        }
         locationRadio.checked
           ? (locationFS.hidden = false)
           : (locationFS.hidden = true);
