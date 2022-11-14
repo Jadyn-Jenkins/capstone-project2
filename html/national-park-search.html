@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>National Park Search Page</title>
+  </head>
+
+  <body>
+
+    <!-- Choosing search style -->
+    <fieldset>
+      <legend>National Park Search Style</legend>
+      <label for="locationRadio">Location</label>
+      <input
+        type="radio"
+        name="searchType"
+        value="location"
+        id="locationRadio"
+        checked
+      />
+
+      <label for="parkTypeRadio">Park Type</label>
+      <input
+        type="radio"
+        name="searchType"
+        value="parkType"
+        id="parkTypeRadio"
+      />
+    </fieldset>
+
+    <!-- Search by Location PRIORITY -->
+    <fieldset>
+      <legend>National Park Search</legend>
+
+      <label for="parkLocation">Choose by Location:</label>
+      <select name="parkLocation" id="parkLocation">
+        <option value="default">Location</option>
+      </select>
+    </fieldset>
+
+    <!-- Search by type -->
+    <fieldset>
+      <legend>National Park Search</legend>
+      <label for="parkType">Choose by Park Type:</label>
+      <select name="parkType" id="parkType">
+        <option value="default">Park Type</option>
+      </select>
+    </fieldset>
+
+    <!-- Listed Results -->
+    <fieldset>
+      <legend>Results</legend>
+      <ul id="results"></ul>
+    </fieldset>
+
+    <!-- Imported Data -->
+    <script src="/scripts/locationData.js"></script>
+    <script src="/scripts/parkTypeData.js"></script>
+    <script src="/scripts/nationalParkData.js"></script>
+
+    <!-- JS files -->
+    
+  </body>
+</html>
