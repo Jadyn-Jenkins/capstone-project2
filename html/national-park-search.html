@@ -5,12 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>National Park Search Page</title>
-
-        <!-- Imported Data -->
-        <script src="/scripts/locationData.js"></script>
-        <script src="/scripts/parkTypeData.js"></script>
-        <script src="/scripts/nationalParkData.js"></script>
-
   </head>
 
   <body>
@@ -18,43 +12,38 @@
     <fieldset id="radioFS">
       <legend>National Park Search Style</legend>
 
-      <label for="allRadio">Show All</label>
-      <input type="radio" name="searchType" value="all" id="allRadio" checked />
-
-      <label for="locationRadio">Location</label>
+      <label for="locationRadio">Location / Park Type</label>
       <input
         type="radio"
         name="searchType"
         value="location"
         id="locationRadio"
+        checked
       />
 
-      <label for="parkTypeRadio">Park Type</label>
-      <input
-        type="radio"
-        name="searchType"
-        value="parkType"
-        id="parkTypeRadio"
-      />
+      <label for="allRadio">Show All</label>
+      <input type="radio" name="searchType" value="all" id="allRadio" />
     </fieldset>
 
     <!-- Search by Location PRIORITY -->
-    <fieldset id="locationFS" hidden>
+    <fieldset id="locationFS">
       <legend>National Park Search</legend>
 
-      <label for="locationSelect">Choose by Location:</label>
-      <select name="locationSelect" id="locationSelect">
-        <option value="default">Location</option>
-      </select>
-    </fieldset>
+      <div>
+        <label for="locationSelect">Choose by Location:</label>
+        <select name="locationSelect" id="locationSelect">
+          <option value="default">Any</option>
+        </select>
+      </div>
 
-    <!-- Search by type -->
-    <fieldset id="typeFS" hidden>
-      <legend>National Park Search</legend>
-      <label for="parkTypeSelect">Choose by Park Type:</label>
-      <select name="parkTypeSelect" id="parkTypeSelect">
-        <option value="default">Park Type</option>
-      </select>
+      <div>
+        <label for="parkTypeSelect">Choose by Park Type:</label>
+        <select name="parkTypeSelect" id="parkTypeSelect">
+          <option value="default">Any</option>
+        </select>
+      </div>
+
+      <button id="searchBtn">Search</button>
     </fieldset>
 
     <!-- Listed Results -->
@@ -62,72 +51,39 @@
       <legend>Results</legend>
       <table>
         <thead>
-            <tr>Location ID</tr>
-            <tr>Name</tr>
-            <tr>Address</tr>
-            <tr>City</tr>
-            <tr>State</tr>
-            <tr>Kentucky</tr>
-            <tr>Zip Code</tr>
-            <tr>Phone</tr>
-            <tr>Fax</tr>
+          <tr>
+            Location ID
+          </tr>
+          <tr>
+            Name
+          </tr>
+          <tr>
+            Address
+          </tr>
+          <tr>
+            City
+          </tr>
+          <tr>
+            State
+          </tr>
+          <tr>
+            Kentucky
+          </tr>
+          <tr>
+            Zip Code
+          </tr>
+          <tr>
+            Phone
+          </tr>
+          <tr>
+            Fax
+          </tr>
         </thead>
-        <tbody id="resultsTable">
-
-        </tbody>
+        <tbody id="resultsTable"></tbody>
       </table>
     </fieldset>
 
     <!-- JS files -->
-    <script>
-      // Radios variables
-      const locationRadio = document.querySelector("#locationRadio"),
-        parkTypeRadio = document.querySelector("#parkTypeRadio"),
-        allRadio = document.querySelector("#allRadio");
-
-      // Select variabels
-      const locationSelect = document.querySelector("#locationSelect"),
-        parkTypeSelect = document.querySelector("#parkTypeSelect");
-
-      //List variables
-      const resultsTable = document.querySelector("#resultsTable");
-
-      //Fieldset Variables
-      const radioFS = document.querySelector("#radioFS"),
-        locationFS = document.querySelector("#locationFS"),
-        typeFS = document.querySelector("#typeFS");
-
-      // Finds which radio button is checked and opens appropriate field set, while hidding innaprpriote fieldset.
-      radioFS.onchange = () => {
-        if (allRadio.checked) {
-          locationFS.hidden = true;
-          typeFS.hidden = true;
-          showResults()
-        }
-
-        locationRadio.checked
-          ? (locationFS.hidden = false)
-          : (locationFS.hidden = true);
-
-        parkTypeRadio.checked
-          ? (typeFS.hidden = false)
-          : (typeFS.hidden = true);
-      };
-
-      function showResults(arr) {
-        resultsTable.innerHTML = arr.map((arrItem) => {"<tr>" + display(arrItem) + "</tr>"}).join(" ");
-      }
-
-      function display(arrItem) {
-        return   `<td> ${arrItem.LocationID} </td>` +
-        `<td> ${arrItem.LocationName} </td>` + 
-        `<td> ${arrItem.Address} </td>` +
-        `<td> ${arrItem.City} </td>` +
-        `<td> ${arrItem.State} </td>` +
-        `<td> ${arrItem.Zipcode} </td>` +
-        `<td> ${arrItem.Phone} </td>` +
-        `<td> ${arrItem.Fax} </td>`;
-      }
-    </script>
+    <script src="/scripts/searchEngine.js" type="module"></script>
   </body>
 </html>
