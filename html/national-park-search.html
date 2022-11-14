@@ -8,9 +8,8 @@
   </head>
 
   <body>
-
     <!-- Choosing search style -->
-    <fieldset>
+    <fieldset id="radioFS">
       <legend>National Park Search Style</legend>
       <label for="locationRadio">Location</label>
       <input
@@ -31,20 +30,20 @@
     </fieldset>
 
     <!-- Search by Location PRIORITY -->
-    <fieldset>
+    <fieldset id="locationFS">
       <legend>National Park Search</legend>
 
-      <label for="parkLocation">Choose by Location:</label>
-      <select name="parkLocation" id="parkLocation">
+      <label for="locationSelect">Choose by Location:</label>
+      <select name="locationSelect" id="locationSelect">
         <option value="default">Location</option>
       </select>
     </fieldset>
 
     <!-- Search by type -->
-    <fieldset>
+    <fieldset id="typeFS" hidden>
       <legend>National Park Search</legend>
-      <label for="parkType">Choose by Park Type:</label>
-      <select name="parkType" id="parkType">
+      <label for="parkTypeSelect">Choose by Park Type:</label>
+      <select name="parkTypeSelect" id="parkTypeSelect">
         <option value="default">Park Type</option>
       </select>
     </fieldset>
@@ -52,7 +51,7 @@
     <!-- Listed Results -->
     <fieldset>
       <legend>Results</legend>
-      <ul id="results"></ul>
+      <ul id="resultsSelect"></ul>
     </fieldset>
 
     <!-- Imported Data -->
@@ -61,6 +60,25 @@
     <script src="/scripts/nationalParkData.js"></script>
 
     <!-- JS files -->
-    
+    <script>
+      const locationRadio = document.querySelector("#locationRadio"),
+        parkTypeRadio = document.querySelector("#parkTypeRadio"),
+        locationSelect = document.querySelector("#locationSelect"),
+        parkTypeSelect = document.querySelector("#parkTypeSelect"),
+        resultsSelect = document.querySelector("#resultsSelect"),
+        radioFS = document.querySelector("#radioFS"),
+        locationFS = document.querySelector("#locationFS"),
+        typeFS = document.querySelector("#typeFS");
+
+      // Finds which radio button is checked and opens appropriate field set, while hidding innaprpriote fieldset.
+      radioFS.onchange = () => {
+        locationRadio.checked
+          ? (locationFS.hidden = false)
+          : (locationFS.hidden = true);
+        parkTypeRadio.checked
+          ? (typeFS.hidden = false)
+          : (typeFS.hidden = true);
+      };
+    </script>
   </body>
 </html>

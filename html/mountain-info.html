@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mountain Information Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <fieldset>
-            <legend>Mountains Search</legend>
-            <label for="mountainSelect">Choose from Mountains:</label>
-            <select name="mountainSelect" id="mountainSelect">
-            <option value="default">Mountain</option>
-            </select>
-        </fieldset>
+      <fieldset>
+        <legend>Mountains Search</legend>
+        <label for="mountainSelect">Choose from Mountains:</label>
+        <select name="mountainSelect" id="mountainSelect">
+          <option value="default">Mountain</option>
+        </select>
+      </fieldset>
 
-        <fieldset>
-            <legend>Mountains Information</legend>
-            <ul id="results">
-
-            </ul>
-        </fieldset>
+      <fieldset>
+        <legend>Mountains Information</legend>
+        <ul id="results"></ul>
+      </fieldset>
     </main>
-    
+
     <!-- Imported Data -->
     <script src="/scripts/mountainData.js"></script>
 
     <!-- JS files -->
-</body>
+    <script>
+      const mountainSelect = document.querySelector("#mountainSelect"),
+        results = document.querySelector("#results");
+    </script>
+  </body>
 </html>
