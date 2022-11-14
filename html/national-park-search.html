@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>National Park Search Page</title>
+
+        <!-- Imported Data -->
+        <script src="/scripts/locationData.js"></script>
+        <script src="/scripts/parkTypeData.js"></script>
+        <script src="/scripts/nationalParkData.js"></script>
+
   </head>
 
   <body>
@@ -13,13 +19,7 @@
       <legend>National Park Search Style</legend>
 
       <label for="allRadio">Show All</label>
-      <input
-        type="radio"
-        name="searchType"
-        value="all"
-        id="allRadio"
-        checked
-      />
+      <input type="radio" name="searchType" value="all" id="allRadio" checked />
 
       <label for="locationRadio">Location</label>
       <input
@@ -60,39 +60,74 @@
     <!-- Listed Results -->
     <fieldset>
       <legend>Results</legend>
-      <ul id="resultsSelect"></ul>
-    </fieldset>
+      <table>
+        <thead>
+            <tr>Location ID</tr>
+            <tr>Name</tr>
+            <tr>Address</tr>
+            <tr>City</tr>
+            <tr>State</tr>
+            <tr>Kentucky</tr>
+            <tr>Zip Code</tr>
+            <tr>Phone</tr>
+            <tr>Fax</tr>
+        </thead>
+        <tbody id="resultsTable">
 
-    <!-- Imported Data -->
-    <script src="/scripts/locationData.js"></script>
-    <script src="/scripts/parkTypeData.js"></script>
-    <script src="/scripts/nationalParkData.js"></script>
+        </tbody>
+      </table>
+    </fieldset>
 
     <!-- JS files -->
     <script>
+      // Radios variables
       const locationRadio = document.querySelector("#locationRadio"),
         parkTypeRadio = document.querySelector("#parkTypeRadio"),
-        allRadio = document.querySelector('#allRadio'),
-        locationSelect = document.querySelector("#locationSelect"),
-        parkTypeSelect = document.querySelector("#parkTypeSelect"),
-        resultsSelect = document.querySelector("#resultsSelect"),
-        radioFS = document.querySelector("#radioFS"),
+        allRadio = document.querySelector("#allRadio");
+
+      // Select variabels
+      const locationSelect = document.querySelector("#locationSelect"),
+        parkTypeSelect = document.querySelector("#parkTypeSelect");
+
+      //List variables
+      const resultsTable = document.querySelector("#resultsTable");
+
+      //Fieldset Variables
+      const radioFS = document.querySelector("#radioFS"),
         locationFS = document.querySelector("#locationFS"),
         typeFS = document.querySelector("#typeFS");
 
       // Finds which radio button is checked and opens appropriate field set, while hidding innaprpriote fieldset.
       radioFS.onchange = () => {
         if (allRadio.checked) {
-            locationFS.hidden = true;
-            typeFS.hidden = true;
+          locationFS.hidden = true;
+          typeFS.hidden = true;
+          showResults()
         }
+
         locationRadio.checked
           ? (locationFS.hidden = false)
           : (locationFS.hidden = true);
+
         parkTypeRadio.checked
           ? (typeFS.hidden = false)
           : (typeFS.hidden = true);
       };
+
+      function showResults(arr) {
+        resultsTable.innerHTML = arr.map((arrItem) => {"<tr>" + display(arrItem) + "</tr>"}).join(" ");
+      }
+
+      function display(arrItem) {
+        return   `<td> ${arrItem.LocationID} </td>` +
+        `<td> ${arrItem.LocationName} </td>` + 
+        `<td> ${arrItem.Address} </td>` +
+        `<td> ${arrItem.City} </td>` +
+        `<td> ${arrItem.State} </td>` +
+        `<td> ${arrItem.Zipcode} </td>` +
+        `<td> ${arrItem.Phone} </td>` +
+        `<td> ${arrItem.Fax} </td>`;
+      }
     </script>
   </body>
 </html>
