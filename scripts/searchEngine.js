@@ -20,8 +20,6 @@ const searchBtn = document.querySelector("#searchBtn");
 const radioFS = document.querySelector("#radioFS"),
 locationFS = document.querySelector("#locationFS");
 
-let filteredArr = [];
-
 // populate each select options
 window.onload = () => {
   popOptions(locationsArray, locationSelect);
@@ -34,10 +32,15 @@ radioFS.onchange = () => {
   locationRadio.checked ? (locationFS.hidden = false) : (locationFS.hidden = true);
 };
 
+// array variable
+let filteredArr = [];
+
 //calculate and display filtered results
 searchBtn.onclick = () => {
+  // Reset results html and filtered Results
   resultsTable.innerHTML = "";
-  console.log(filteredArr);
+  filteredArr = [];
+
   filteredArr = useFilter();
   showResults(filteredArr);
 };
@@ -53,67 +56,22 @@ function showResults(arr) {
 }
 
 function useFilter() {
-  //   let filterType = "-0";
-  //  let filterCounter = 0;
-
   let parkType = parkTypeSelect.value;
   let location = locationSelect.value;
 
   filteredArr = [];
 
-  //START BY FIXING THIS IF STATEMENT. Third Else if works. need to test others. and arr var in display is coming back as one and I believe this is the issue.
   if (parkType != "default" && location == "default") {
-    filteredArr.push(nationalParksArray.filter((arrItem) => arrItem.LocationName.includes(parkType)));
-    console.log(filteredArr)
-    return filteredArr;
-
+    return filteredArr = nationalParksArray.filter((arrItem) => arrItem.LocationName.includes(parkType));
   } else if (parkType == "default" && location != "default") {
-    filteredArr.push(nationalParksArray.filter((arrItem) => arrItem.State == location));
-    console.log(filteredArr)
-    return filteredArr;
-
+    return filteredArr = nationalParksArray.filter((arrItem) => arrItem.State == location);
   } else if (parkType == "default" && location == "default") {
-    console.log(nationalParksArray)
     return nationalParksArray;
-
+  } else if (parkType != "default" && location != "default") {
+    return filteredArr = nationalParksArray.filter((arrItem) => arrItem.LocationName.includes(parkType) && arrItem.State == location);
   } else {
-    filteredArr.push(nationalParksArray.filter((arrItem) => arrItem.LocationName.includes(parkType) && arrItem.State == location));
-    console.log(filteredArr)
-    return filteredArr;
+    console.log('Error with search requirements')
   }
-
-  /*   let parkTypeFiltered = [];
-  let locationFiltered = [];
-  let blendedFiltered = [];
-
-  if (parkType != "default") {
-    if (filterType == "-0") filterType = "park";
-    filterCounter++;
-
-  }
-
-  if (location != "default") {
-    if (filter == "-0") filterType = "location";
-    filterCounter++;
-  }
-
-  if(filterCounter == 2) {
-
-  }
-
-  switch (filterCounter) {
-    case 1:
-      if (filterType == "park") return parkTypeFiltered; 
-      if (filterType == "location") return locationFiltered; 
-      break;
-
-    case 2:
-      break;
-
-    default:
-      return parkTypesArray;
-      break;
-  } */
 }
 function displayTableData(arrItem) {
   return (
@@ -122,7 +80,7 @@ function displayTableData(arrItem) {
     `<td> ${arrItem.Address} </td>` +
     `<td> ${arrItem.City} </td>` +
     `<td> ${arrItem.State} </td>` +
-    `<td> ${arrItem.Zipcode} </td>` +
+    `<td> ${arrItem.ZipCode} </td>` +
     `<td> ${arrItem.Phone} </td>` +
     `<td> ${arrItem.Fax} </td>`
   );
