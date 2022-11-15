@@ -20,6 +20,9 @@ const searchBtn = document.querySelector("#searchBtn");
 const radioFS = document.querySelector("#radioFS"),
 locationFS = document.querySelector("#locationFS");
 
+// array variable
+let filteredArr = [];
+
 // populate each select options
 window.onload = () => {
   popOptions(locationsArray, locationSelect);
@@ -32,27 +35,35 @@ radioFS.onchange = () => {
   locationRadio.checked ? (locationFS.hidden = false) : (locationFS.hidden = true);
 };
 
-// array variable
-let filteredArr = [];
-
 //calculate and display filtered results
+
+
 searchBtn.onclick = () => {
   // Reset results html and filtered Results
-  resultsTable.innerHTML = "";
+  resetResults()
   filteredArr = [];
 
+  //Grab filtered results and display results on HTML
   filteredArr = useFilter();
   showResults(filteredArr);
 };
 
-// TEST FOR NOW
-let testArr = [];
-for (let i = 0; i < 3; i++) {
-  testArr.push(nationalParksArray[i]);
+locationRadio.onclick = () => {
+  resetResults()
+}
+
+allRadio.onclick = () => {
+  resetResults()
+
+  showResults(nationalParksArray);
+}
+
+function resetResults(){
+  resultsTable.innerHTML = "";
 }
 
 function showResults(arr) {
-  resultsTable.innerHTML = arr.map((arrItem) => "<tr>" + displayTableData(arrItem) + "</tr>", " ").join("");
+  resultsTable.innerHTML = arr.map((arrItem) => "<tr>" + displayTableData(arrItem) + displayLink(arrItem) + "</tr>").join("");
 }
 
 function useFilter() {
@@ -70,9 +81,10 @@ function useFilter() {
   } else if (parkType != "default" && location != "default") {
     return filteredArr = nationalParksArray.filter((arrItem) => arrItem.LocationName.includes(parkType) && arrItem.State == location);
   } else {
-    console.log('Error with search requirements')
+    alert('Error with search requirements')
   }
 }
+
 function displayTableData(arrItem) {
   return (
     `<td> ${arrItem.LocationID} </td>` +
@@ -83,7 +95,12 @@ function displayTableData(arrItem) {
     `<td> ${arrItem.ZipCode} </td>` +
     `<td> ${arrItem.Phone} </td>` +
     `<td> ${arrItem.Fax} </td>`
+    
   );
+}
+
+function displayLink(arrItem){
+  if(arrItem.Visit) return `<td><a href="${arrItem.Visit}"> Visit Homepage </a></td>`;
 }
 
 function popOptions(arr, selectMenu) {
