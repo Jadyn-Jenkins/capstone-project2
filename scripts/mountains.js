@@ -1,9 +1,13 @@
 import { mountainsArray } from "./mountainData.js";
 
+// --------------------VARIABLES------------------------
+
 const mountainSelect = document.querySelector("#mountainSelect"),
-  results = document.querySelector("#results");
+results = document.querySelector("#results");
 
 let match = [];
+
+// --------------------EVENTS------------------------
 
 window.onload = () => {
   popOptions(mountainsArray, mountainSelect);
@@ -16,6 +20,8 @@ mountainSelect.onchange = () => {
 
   showResults(match);
 };
+
+// --------------------FUNCTIONS------------------------
 
 function showResults(arr) {
   results.innerHTML = arr

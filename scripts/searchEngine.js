@@ -2,6 +2,8 @@ import { nationalParksArray } from "./nationalParkData.js";
 import { locationsArray } from "./locationData.js";
 import { parkTypesArray } from "./parkTypeData.js";
 
+// --------------------VARIABLES------------------------
+
 // Radios variables
 const locationRadio = document.querySelector("#locationRadio"),
 allRadio = document.querySelector("#allRadio");
@@ -20,8 +22,11 @@ const searchBtn = document.querySelector("#searchBtn");
 const radioFS = document.querySelector("#radioFS"),
 locationFS = document.querySelector("#locationFS");
 
-// array variable
+// Array Variable
 let filteredArr = [];
+
+
+// --------------------EVENTS------------------------
 
 // populate each select options
 window.onload = () => {
@@ -31,35 +36,32 @@ window.onload = () => {
 
 // Finds which radio button is checked and opens appropriate field set, while hidding innaprpriote fieldset.
 radioFS.onchange = () => {
+  resetResults();
+
   allRadio.checked ? (locationFS.hidden = true) : (locationFS.hidden = false);
   locationRadio.checked ? (locationFS.hidden = false) : (locationFS.hidden = true);
 };
 
-//calculate and display filtered results
-
-
 searchBtn.onclick = () => {
   // Reset results html and filtered Results
   resetResults()
-  filteredArr = [];
 
   //Grab filtered results and display results on HTML
   filteredArr = useFilter();
   showResults(filteredArr);
 };
 
-locationRadio.onclick = () => {
-  resetResults()
-}
+locationSelect.onchange = () => resetResults();
 
-allRadio.onclick = () => {
-  resetResults()
+parkTypeSelect.onchange = () => resetResults();
 
-  showResults(nationalParksArray);
-}
+allRadio.onclick = () => showResults(nationalParksArray);
+
+// --------------------FUNCTIONS------------------------
 
 function resetResults(){
   resultsTable.innerHTML = "";
+  filteredArr = [];
 }
 
 function showResults(arr) {
@@ -70,7 +72,7 @@ function useFilter() {
   let parkType = parkTypeSelect.value;
   let location = locationSelect.value;
 
-  filteredArr = [];
+  resetResults();
 
   if (parkType != "default" && location == "default") {
     return filteredArr = nationalParksArray.filter((arrItem) => arrItem.LocationName.includes(parkType));
