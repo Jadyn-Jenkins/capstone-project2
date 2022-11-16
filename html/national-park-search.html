@@ -22,13 +22,15 @@
     ></script>
 
     <!-- CSS links -->
-    <link rel="stylesheet" href="/css/stlyes.css">
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
 
   <body>
+    <main>
+    <h1 class="text-center">Learn More About Your Parks</h1>
     <!-- Choosing search style -->
-    <fieldset id="radioFS">
-      <legend>National Park Search Style</legend>
+    <fieldset id="radioFS" class="text-center">
+      <h2>National Park Search Style</h2>
 
       <label for="locationRadio">Location / Park Type</label>
       <input
@@ -43,64 +45,59 @@
       <input type="radio" name="searchType" value="all" id="allRadio" />
     </fieldset>
 
-    <!-- Search by Location PRIORITY -->
-    <fieldset id="locationFS">
-      <legend>National Park Search</legend>
+    <!-- Search by Location / Park Type -->
+    <fieldset id="locationFS" class="text-center">
+      <h2>National Park Search</h2>
 
-      <div>
-        <label for="locationSelect">Choose by Location:</label>
-        <select name="locationSelect" id="locationSelect">
-          <option value="default">Any Location</option>
-        </select>
-      </div>
+      <label for="locationSelect parkTypeSelect">Search by:</label>
+      <select name="locationSelect" id="locationSelect">
+        <option value="default">Any Location</option>
+      </select>
+    
+      <select name="parkTypeSelect" id="parkTypeSelect">
+        <option value="default">Any Park Type</option>
+      </select>
 
-      <div>
-        <label for="parkTypeSelect">Choose by Park Type:</label>
-        <select name="parkTypeSelect" id="parkTypeSelect">
-          <option value="default">Any</option>
-        </select>
-      </div>
-
-      <button id="searchBtn">Search</button>
+      <button class="btn btn-success" id="searchBtn">Search</button>
     </fieldset>
 
     <!-- Listed Results -->
-    <fieldset>
+    <fieldset class="text-center">
       <legend>Results</legend>
-      <table>
+      <table class="table table-striped">
         <thead>
-          <tr>
+          <th scope="row">
             Location ID
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             Name
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             Address
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             City
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             State
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             Zip Code
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             Phone
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             Fax
-          </tr>
-          <tr>
+          </th>
+          <th scope="row">
             Link to Homepage
-          </tr>
+          </th>
         </thead>
         <tbody id="resultsTable"></tbody>
       </table>
     </fieldset>
-
+  </main>
     <!-- JS files -->
     <script src="/scripts/searchEngine.js" type="module"></script>
   </body>

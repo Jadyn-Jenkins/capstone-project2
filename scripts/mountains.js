@@ -27,7 +27,7 @@ function showResults(arr) {
   results.innerHTML = arr
     .map(
       (arrItem) =>
-        `<div class="card">` +
+        `<div class="card shadow p-3 mb-5 bg-white rounded">` +
         showImg(arrItem) +
         `<div class="card-body">` +
         `<h4 class="card-title">${arrItem.name}</h4>` +
@@ -38,7 +38,7 @@ function showResults(arr) {
 }
 
 function showImg(arrItem) {
-  return `<img class="card-img-top" src="/assets/images/${arrItem.img}"> </img>`;
+  return `<img class="card-img" src="/assets/images/${arrItem.img}"> </img>`;
 }
 
 function popOptions(arr, selectMenu) {

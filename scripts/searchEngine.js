@@ -89,20 +89,26 @@ function useFilter() {
 
 function displayTableData(arrItem) {
   return (
-    `<td> ${arrItem.LocationID} </td>` +
-    `<td> ${arrItem.LocationName} </td>` +
-    `<td> ${arrItem.Address} </td>` +
-    `<td> ${arrItem.City} </td>` +
-    `<td> ${arrItem.State} </td>` +
-    `<td> ${arrItem.ZipCode} </td>` +
-    `<td> ${arrItem.Phone} </td>` +
-    `<td> ${arrItem.Fax} </td>`
+    `<td> ${checkForValue(arrItem.LocationID.toUpperCase())} </td>` +
+    `<td> ${checkForValue(arrItem.LocationName)} </td>` +
+    `<td> ${checkForValue(arrItem.Address)} </td>` +
+    `<td> ${checkForValue(arrItem.City)} </td>` +
+    `<td> ${checkForValue(arrItem.State)} </td>` +
+    `<td> ${checkForValue(arrItem.ZipCode)} </td>` +
+    `<td> ${checkForValue(arrItem.Phone)} </td>` +
+    `<td> ${checkForValue(arrItem.Fax)} </td>`
     
   );
 }
 
+function checkForValue(val){
+  if (val) return val;
+  else return 'none';
+}
+
 function displayLink(arrItem){
-  if(arrItem.Visit) return `<td><a href="${arrItem.Visit}"> Visit Homepage </a></td>`;
+  if(arrItem.Visit) return `<td><a href="${arrItem.Visit}"> Visit Homepage </a></td>`
+  else return `<td> none </td>`;
 }
 
 function popOptions(arr, selectMenu) {

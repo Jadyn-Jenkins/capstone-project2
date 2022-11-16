@@ -1,0 +1,31 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main{
+    margin: 20vh 25px 25px 25px;
+}
+
+input[type="radio"] {
+    margin-right: 30px;
+}
+
+button{
+    margin-left: 25px;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+h2{
+    margin-top: 25px;
+}
+
+select{
+    border-color: #3d9847;
+}
+.card{
+    width: 50%;
+    margin: 5px 15px;
+}
