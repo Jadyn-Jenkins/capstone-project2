@@ -27,18 +27,18 @@ function showResults(arr) {
   results.innerHTML = arr
     .map(
       (arrItem) =>
-        `<div>` +
+        `<div class="card">` +
         showImg(arrItem) +
-        `<div>` +
-        `<h4>${arrItem.name}</h4>` +
-        `<p>${arrItem.desc}</p>` +
+        `<div class="card-body">` +
+        `<h4 class="card-title">${arrItem.name}</h4>` +
+        `<p class="card-text">${arrItem.desc}</p>` +
         `</div> </div>`
     )
     .join("");
 }
 
 function showImg(arrItem) {
-  return `<img src="/assets/images/${arrItem.img}"> </img>`;
+  return `<img class="card-img-top" src="/assets/images/${arrItem.img}"> </img>`;
 }
 
 function popOptions(arr, selectMenu) {
