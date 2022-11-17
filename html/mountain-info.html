@@ -25,9 +25,19 @@
       <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
+    <div id="mountains" class="hero shadow-xl shadow-inset">
+      <h1 class="">Our Great Mountains</h1>
+    </div>
+
+    <nav class="text-center shadow rounded">
+      <a class="btn btn-success shadow" href="/html/national-park-search.html">National Park Search</a>
+      <a class="btn btn-success shadow" href="/index.html">Home</a>
+      <a class="btn btn-success shadow" href="/html/mountain-info.html">Mountains Information</a>
+    </nav>
+
     <main>
       <div class="text-center my-6">
-        <h1 class="">Mountain Search</h1>
+        <h1 id="searchScreenPos">Mountain Search</h1>
         <select class="" name="mountainSelect" id="mountainSelect">
           <option value="default">Pick a Mountain</option>
         </select>
@@ -36,9 +46,8 @@
       <div class="p-1 my-3">
         <div id="results" class="d-flex p-2"></div>
       </div>
+      <div id="massSpace"></div>
     </main>
-
-
 
     <!-- JS files -->
     <script src="/scripts/mountains.js" type="module"></script>

@@ -3,7 +3,7 @@ import { mountainsArray } from "./mountainData.js";
 // --------------------VARIABLES------------------------
 
 const mountainSelect = document.querySelector("#mountainSelect"),
-results = document.querySelector("#results");
+  results = document.querySelector("#results");
 
 let match = [];
 
@@ -17,8 +17,10 @@ mountainSelect.onchange = () => {
   match = mountainsArray.filter((arrItem) =>
     arrItem.name.includes(mountainSelect.value)
   );
-
+  
+  
   showResults(match);
+  window.scrollTo(0, document.body.scrollHeight); // START WORK HERE. TRYING TO GET PAGE TO SCROLL DOWN WHEN RESULTS ARE SHOWN
 };
 
 // --------------------FUNCTIONS------------------------
@@ -27,7 +29,7 @@ function showResults(arr) {
   results.innerHTML = arr
     .map(
       (arrItem) =>
-        `<div class="card shadow p-3 mb-5 bg-white rounded">` +
+        `<div id="card" class="card shadow p-3 mb-5 bg-white rounded">` +
         showImg(arrItem) +
         `<div class="card-body">` +
         `<h4 class="card-title">${arrItem.name}</h4>` +
@@ -35,6 +37,7 @@ function showResults(arr) {
         `</div> </div>`
     )
     .join("");
+    
 }
 
 function showImg(arrItem) {
@@ -44,5 +47,5 @@ function showImg(arrItem) {
 function popOptions(arr, selectMenu) {
   selectMenu.innerHTML += arr.map(
     (arrItem) => "<option>" + arrItem.name + "</option>"
-  );
+  ).join("");
 }

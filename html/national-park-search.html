@@ -22,82 +22,82 @@
     ></script>
 
     <!-- CSS links -->
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
   <body>
-    <main>
-    <h1 class="text-center">Learn More About Your Parks</h1>
-    <!-- Choosing search style -->
-    <fieldset id="radioFS" class="text-center">
-      <h2>National Park Search Style</h2>
-
-      <label for="locationRadio">Location / Park Type</label>
-      <input
-        type="radio"
-        name="searchType"
-        value="location"
-        id="locationRadio"
-        checked
-      />
-
-      <label for="allRadio">Show All</label>
-      <input type="radio" name="searchType" value="all" id="allRadio" />
-    </fieldset>
-
-    <!-- Search by Location / Park Type -->
-    <fieldset id="locationFS" class="text-center">
-      <h2>National Park Search</h2>
-
-      <label for="locationSelect parkTypeSelect">Search by:</label>
-      <select name="locationSelect" id="locationSelect">
-        <option value="default">Any Location</option>
-      </select>
+    <div id="nationalParks" class="hero shadow-xl shadow-inset">
+      <h1 class="">The Great Outdoors</h1>
+  </div>
     
-      <select name="parkTypeSelect" id="parkTypeSelect">
-        <option value="default">Any Park Type</option>
-      </select>
+      <nav class="text-center shadow rounded">
+        <a class="btn btn-success shadow" href="/html/national-park-search.html">National Park Search</a>
+        <a class="btn btn-success shadow" href="/index.html">Home</a>
+        <a class="btn btn-success shadow" href="/html/mountain-info.html">Mountains Information</a>
+      </nav>
+    
 
-      <button class="btn btn-success" id="searchBtn">Search</button>
-    </fieldset>
+    <main>
+      <h1 id="searchScreenPos">Learn More About Your Parks</h1>
+      <!-- Choosing search style -->
+      <fieldset id="radioFS" class="text-center">
+        <h2>National Park Search Style</h2>
 
-    <!-- Listed Results -->
-    <fieldset class="text-center">
-      <legend>Results</legend>
-      <table class="table table-striped">
-        <thead>
-          <th scope="row">
-            Location ID
-          </th>
-          <th scope="row">
-            Name
-          </th>
-          <th scope="row">
-            Address
-          </th>
-          <th scope="row">
-            City
-          </th>
-          <th scope="row">
-            State
-          </th>
-          <th scope="row">
-            Zip Code
-          </th>
-          <th scope="row">
-            Phone
-          </th>
-          <th scope="row">
-            Fax
-          </th>
-          <th scope="row">
-            Link to Homepage
-          </th>
-        </thead>
-        <tbody id="resultsTable"></tbody>
-      </table>
-    </fieldset>
-  </main>
+        <label for="locationRadio">Location / Park Type</label>
+        <input
+          type="radio"
+          name="searchType"
+          value="location"
+          id="locationRadio"
+          checked
+        />
+
+        <label for="allRadio">Show All</label>
+        <input type="radio" name="searchType" value="all" id="allRadio" />
+      </fieldset>
+
+      <!-- Search by Location / Park Type -->
+      <fieldset id="locationFS" class="text-center">
+        <h2>National Park Search</h2>
+
+        <label for="locationSelect parkTypeSelect">Search by:</label>
+        <select name="locationSelect" id="locationSelect">
+          <option value="default">Any Location</option>
+        </select>
+
+        <select name="parkTypeSelect" id="parkTypeSelect">
+          <option value="default">Any Park Type</option>
+        </select>
+
+        <button class="btn btn-success" id="searchBtn">Search</button>
+      </fieldset>
+
+      <div class="text-center">
+        <small id="noResultMsg" hidden>No results founds</small>
+      </div>
+
+      <!-- Listed Results -->
+      <fieldset class="text-center" id="resultContainer" hidden>
+        <h2>Results</h2>
+        <small id="noResultMsg" hidden>No results founds</small>
+
+        <table class="table table-striped">
+          <thead>
+            <th scope="row">Location ID</th>
+            <th scope="row">Name</th>
+            <th scope="row">Address</th>
+            <th scope="row">City</th>
+            <th scope="row">State</th>
+            <th scope="row">Zip Code</th>
+            <th scope="row">Phone</th>
+            <th scope="row">Fax</th>
+            <th scope="row">Link to Homepage</th>
+          </thead>
+          <tbody id="resultsTable"></tbody>
+        </table>
+      </fieldset>
+      <div id="massSpace"></div>
+    </main>
     <!-- JS files -->
     <script src="/scripts/searchEngine.js" type="module"></script>
   </body>

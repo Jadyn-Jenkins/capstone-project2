@@ -2,29 +2,100 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+body{
+    background-color: rgb(246, 249, 250);
+}
+
 main{
-    margin: 20vh 25px 25px 25px;
+    margin: 20px 5% 25px 5%;
+}
+
+main img{
+    margin: 0px 20px 15px 0px;
+    width: 90%;
+    
+}
+
+nav{
+    position: sticky;
+    top:0;
+    bottom:0;
+
+    padding: 12px 0px;
+
+    background-color: rgb(246, 249, 250);
+}
+
+table{
+    float: none;
 }
 
 input[type="radio"] {
     margin-right: 30px;
 }
 
+.hero{
+    /* Sizeing up Visit View */
+    height: 92vh;
+
+    /* Background styles */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+
+    /* Font Settings */
+    text-align: left;
+    color: white;
+}
+
+.hero#index {
+    /* Background image */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/mountainBG.png);
+}
+.hero#nationalParks {
+    /* Background image */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/img-display02.jpg);
+}
+.hero#mountains {
+    /* Background image */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/img-display01.jpg);
+}
+
+.hero h1 {
+    /* Font Settings */
+    font-size: 4em;
+
+    /* Position Setting */
+    padding-top: 220px;
+    text-align: center;
+}
+
 button{
     margin-left: 25px;
 }
 
-h1, h2{
+main > h1, h2{
     text-align: center;
+    margin-top: 25px;
 }
 
-h2{
-    margin-top: 25px;
+#searchScreenPos{
+    margin: 180px 0px 0px 0px;
+}
+
+#massSpace {
+    margin-bottom: 130px;
+}
+
+p{
+    text-justify: inter-word;
 }
 
 select{
     border-color: #3d9847;
 }
+
 .card{
     width: 50%;
     margin: 5px 15px;
