@@ -20,8 +20,9 @@ mountainSelect.onchange = () => {
     arrItem.name.includes(mountainSelect.value)
   );
   showResults(match);
+  displaySunSetAndSunRise(match[0]);
   setTimeout(() => {
-      displaySunSetAndSunRise(match[0]);
+      
       window.scrollTo(0, document.body.scrollHeight)
     }, 100);
 };
@@ -38,37 +39,23 @@ function showResults(arr) {
         `<h4 class="card-title">${arrItem.name}</h4>` +
         `<p class="card-text">${arrItem.desc}</p>` +
         `</div> </div>` +
-        //Create Card Carosel
-        `<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">` +
-        `<div class="carousel-inner">` +
-        `<div class="carousel-item active">` +
+        
         // CREATING SUNRISE CARD
         `<div id="card" class="card shadow p-3 mb-5 bg-white rounded">` +
         `<img src="/assets/images/sunRise.png" alt="Sun Rise">` +
         `<div class="card-body">` +
         `<h4 class="card-title">Sun Rise</h4>` +
-        `<p class="card-text">Today at <output id="sunrise"></output></p>` +
+        `<p class="card-text">Today at <output id="sunrise"></output>, the sun will rise at ${arrItem.name}</p>` +
         `</div> </div>` +
-        `</div>` +
-        `<div class="carousel-item">` +
+
         // CREATING SUNSET CARD
         `<div id="card" class="card shadow p-3 mb-5 bg-white rounded">` +
         `<img src="/assets/images/sunSet.png" alt="Sun Set">` +
         `<div class="card-body">` +
         `<h4 class="card-title">Sun Set</h4>` +
-        `<p class="card-text">Today at <output id="sunset"></output>></p>` +
-        `</div> </div>` +
-        `</div>` +
-        `</div>` +
-        `<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">` +
-        `<span class="carousel-control-prev-icon" aria-hidden="true"></span>` +
-        `<span class="visually-hidden">Previous</span>` +
-        `</button>` +
-        `<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">` +
-        `<span class="carousel-control-next-icon" aria-hidden="true"></span>` +
-        `<span class="visually-hidden">Next</span>` +
-        `</button>` +
-        `</div>`;
+        `<p class="card-text">Today at <output id="sunset"></output>, the sun will set at ${arrItem.name}</p>` +
+        `</div> </div>`;
+        
     })
     .join("");
 }

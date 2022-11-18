@@ -10,10 +10,23 @@ main{
     margin: 20px 5% 25px 5%;
 }
 
-main img{
+main > h1, h2{
+    text-align: center;
+}
+
+main > img{
     margin: 0px 20px 15px 0px;
-    width: 90%;
-    
+    width: 90%; 
+}
+
+main > h1{
+    margin: 45px 0px;
+}
+
+fieldset{
+    margin: 90px 0px;
+    padding: 25px 10px;
+
 }
 
 nav{
@@ -22,7 +35,7 @@ nav{
     bottom:0;
 
     padding: 12px 0px;
-
+    
     background-color: rgb(246, 249, 250);
 }
 
@@ -49,15 +62,15 @@ input[type="radio"] {
     color: white;
 }
 
-.hero#index {
+#index {
     /* Background image */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/mountainBG.png);
 }
-.hero#nationalParks {
+#nationalParks {
     /* Background image */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/img-display02.jpg);
 }
-.hero#mountains {
+#mountains {
     /* Background image */
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/assets/images/img-display01.jpg);
 }
@@ -75,17 +88,8 @@ button{
     margin-left: 25px;
 }
 
-main > h1, h2{
-    text-align: center;
-    margin-top: 25px;
-}
-
-#searchScreenPos{
-    margin: 180px 0px 0px 0px;
-}
-
 #massSpace {
-    margin-bottom: 130px;
+    margin-bottom: 280px;
 }
 
 p{
@@ -99,4 +103,9 @@ select{
 .card{
     width: 50%;
     margin: 5px 15px;
+    font-size: clamp(18px, 3vw, 22px);
+    z-index: -1;
+}
+.card img{
+    max-width: 400px;
 }
